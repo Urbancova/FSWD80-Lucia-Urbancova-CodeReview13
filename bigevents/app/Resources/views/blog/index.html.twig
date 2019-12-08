@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Latest Events</h1>
+
+<div class="card-deck">
+
+{% for post in posts %}
+
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+	  <img src="../images/{{post.image}}" class="card-img-top" alt="...">
+	  <div class="card-body">
+	    <h4 class="card-title">{{post.name}}</h4>
+	    <p class="card-text"><b>Type:</b> {{post.category}}</p>
+	    <p class="card-text "><b>Date & Time:</b> {{post.eventDate|date('F j, Y, g:i a')}}</p>
+	    <p class="card-text">{{post.description}}</p>
+	    <p class="card-text">{{post.url}}</p>
+	    <p class="card-text">{{post.email}}</p>
+	    <p class="card-text">{{post.phone}}</p>
+	  </div>
+	  <div>
+	  	<a href="/blog/details/1" class="btn btn-secondary">View</a>
+	    <a href="/blog/edit/1" class="btn btn-dark">Edit</a>
+	    <a href="/blog/delete/1" class="btn btn-warning">Delete</a>
+	  </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated {{post.createDate|date('F j, Y, g:i a')}} </small>
+    </div>
+  </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
